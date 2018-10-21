@@ -14,13 +14,14 @@ If you need to flash a new Raspbian image to an SD.
 * Use Etcher to transfer to SD-card
 * In File Explorer add a file with the name ssh (no extention)
 * In File Explorer add a file "wpa_supplicant.conf", it should contain the following:
+'''
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 network={
     ssid="YOUR_NETWORK_NAME"
     psk="YOUR_PASSWORD"
     key_mgmt=WPA-PSK
 }
-
+'''
 * hostname if needed, timezone and locales
 * Move SD to RPi and boot it up. Wait until installation is done. Probably 45-60 min.
 
