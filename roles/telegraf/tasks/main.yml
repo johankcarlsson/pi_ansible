@@ -1,0 +1,8 @@
+---
+- import_tasks: install.yml
+  become: true
+  tags: [telegraf, install]
+
+- import_tasks: configure.yml
+  become: true
+  tags: [telegraf, configure]

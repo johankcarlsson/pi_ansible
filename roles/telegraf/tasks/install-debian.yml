@@ -1,0 +1,24 @@
+---
+- name: Install any necessary dependencies [Debian/Ubuntu]
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - python-pip
+    - apt-transport-https
+
+- name: Import InfluxData GPG signing key [Debian/Ubuntu]
+  apt_key:
+    url: "{{ telegraf_repo_base_url }}/influxdb.key"
+    state: present
+
+- name: Add InfluxData repository [Debian/Ubuntu]
+  apt_repository:
+    repo: deb {{ telegraf_repo_base_url }}/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} {{ telegraf_install_version }}
+    state: present
+
+- name: Install Telegraf packages [Debian/Ubuntu]
+  apt:
+    name: telegraf
+    state: latest
+    update_cache: yes

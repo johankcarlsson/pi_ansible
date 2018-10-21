@@ -1,0 +1,68 @@
+---
+
+# Version to install when using the RedHat play (yum/rpm package)
+telegraf_rpm_version: 1.6.3-1
+
+# Configuration Variables
+telegraf_tags: {}
+telegraf_logfile: "" # emtpy means no log
+telegraf_hostname: "" # empty means fall back to os.Hostname()
+telegraf_omit_hostname: "false"
+# Define telegraf_custom_bin_url to overwrite telegraf bin with your own build
+# telegraf_custom_bin_url: 'https://download.com/location/telegraf'
+
+telegraf_flush_interval: 20s
+telegraf_flush_jitter: 5s
+
+# Define this variable if you want to provide your own config file,
+# without passing plugin configs through the telegraf_input_plugins variable.
+# Will be put into /etc/telegraf/telegraf.d/ config dir.
+# telegraf_custom_config_file: /path/to/template/file.conf.j2
+
+# Replace with your own plugin configurations:
+
+telegraf_output_plugins:
+  - name: influxdb
+    options:
+      urls: ["http://localhost:8086"]
+      database: "telegraf"
+      write_consistency: "any"
+      timeout: "10s"
+#  - name: instrumental
+#    options:
+#      api_token: "dummy-project-token"
+#      prefix: ""
+#      template: "measurement.host.system_measurement_tag.tags.field"
+#      timeout: "2s"
+#      debug: false
+
+telegraf_input_plugins:
+  - name: cpu
+    options:
+      percpu: true
+      totalcpu: true
+      collect_cpu_time: false
+  - name: disk
+    options:
+      mount_points: ["/"]
+      ignore_fs: ["tmpfs", "devtmpfs", "devfs"]
+      name_override: "system"
+      tagexclude: ["fstype"]
+      fieldpass: ["free", "total", "used", "used_percent"]
+    tags:
+      system_measurement_tag: "disk"
+  - name: diskio
+    options:
+      skip_serial_number: true
+  - name: kernel
+  - name: mem
+  - name: processes
+  - name: swap
+  - name: system
+  - name: net
+    options:
+      name_override: "system"
+    tags:
+      system_measurement_tag: "network"
+    tagdrop:
+      interface: ["all"]

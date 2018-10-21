@@ -1,0 +1,10 @@
+---
+ports:
+  - device: /dev/ttyUSB0
+    baud: 9600
+    tcpport: 2000
+    state: raw
+    timeout: 0
+## From current servers
+##2000:raw:0:/dev/ttyUSB0:9600 NONE 1STOPBIT 8DATABITS -RTSCTS
+##2001:raw:0:/dev/ttyUSB1:9600 NONE 1STOPBIT 8DATABITS -RTSCTS
