@@ -43,7 +43,8 @@ network={
 After you are up and running, open a browser and point it to [http://&lt;yourIP&gt;:3000](http://&lt;yourIP&gt;:3000) for Grafana or [http://&lt;yourIP&gt;:8888](http://&lt;yourIP&gt;:8888) for Chronograf.
 
 ## To DOs, still manual config
-* 
+* Installation of Grafana gets timeouts
+* installation of influxdb stops/fails on checking if service is up,  even if the service is.
 
 ## Deploying changes
 Run the ansible command again. It will download some things all over again.
