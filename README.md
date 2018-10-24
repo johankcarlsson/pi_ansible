@@ -12,7 +12,7 @@ Note that this is a **work in progress** document and is aimed for my own setup.
 If you need to flash a new Raspbian image to an SD.
 * Download: the Lite version of Raspbian
 * Use Etcher to transfer to SD-card
-* In File Explorer add a file with the name ssh (no extention)
+* In File Explorer add a file with the name `ssh` (no extention)
 * In File Explorer add a file "wpa_supplicant.conf", it should contain the following:
 ```
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
