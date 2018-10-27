@@ -16,6 +16,7 @@ If you need to flash a new Raspbian image to an SD.
 * In File Explorer add a file `wpa_supplicant.conf`, it should contain the following:
 ```
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+country=SE
 network={
     ssid="YOUR_NETWORK_NAME"
     psk="YOUR_PASSWORD"
